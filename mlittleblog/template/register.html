@@ -1,0 +1,33 @@
+{% extends base.html %}
+{% block title %}注册{% end %}
+{% block head %}
+<script src="static/js/jquery-3.2.1.js"></script>
+<script>
+    $(function () {
+        var inputuname = $('#input_uname');
+        var spanuname = $('#span_uname');
+        inputuname.blur(function () {
+            var name = inputuname.val();
+            $.ajax({
+                url: '/check',
+                data: {'uname':name},
+                type: 'post',
+                datatype: 'json',
+                success:function (data) {
+                    if(data.msg=='fail'){
+                        spanuname.text('该用户名已经存在!');
+                    }else{
+                        spanuname.text('');
+                    }
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+        })
+    });
+</script>
+{% end %}
+{% block body %}
+{% module registermodule() %}
+{% end %}

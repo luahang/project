@@ -1,0 +1,55 @@
+{% extends base.html %}
+{% block title %}登录{% end %}
+{% block head %}
+<script src="static/js/jquery-3.2.1.js"></script>
+<script>
+//     $(function () {
+//        var inputuname = $('#input_uname');
+//        var inputupwd = $('#input_upwd');
+//        var spanupwd = $('#span_upwd');
+//        inputupwd.blur(function () {
+//            var upwd = inputupwd.val();
+//            $.ajax({
+//                url: '/checkpass',
+//                data: {'inputupwd':upwd},
+//                type: 'post',
+//                datatype: 'json',
+//                success:function (data) {
+//                    if(data.msg=='fail'){
+//                        spanupwd.text('密码错误！');
+//                    }
+//                    else{
+//                        spanupwd.text('');
+//                    }
+//                },
+//                error:function (error) {
+//                    console.log(error);
+//                }
+//            })
+//        })
+//
+//    });
+     $(function () {
+         var inputuname = $('#input_uname');
+         var img = $('#show_img');
+         inputuname.blur(function () {
+             var name = inputuname.val();
+             $.ajax({
+                 url: '/checkimg',
+                 data: {'uname':name},
+                 type: 'post',
+                 datatype: 'json',
+                 success: function (data) {
+                     img.attr('src','static/images/'+data.msg);
+                 },
+                 error: function (error) {
+                     console.log(error);
+                 }
+             })
+         });
+     });
+</script>
+{% end %}
+{% block body %}
+{% module loginmodule() %}
+{% end %}

@@ -1,0 +1,55 @@
+{% block body %}
+    <ul style="list-style-type: none;margin: 30px auto;width: 80%">
+        {% for blog in blogs %}
+            <li>
+            <table width="100%">
+                <!--1行-->
+                <tr>
+                    <td rowspan="4" width="20%" align="center">
+                        <!--2行一列-->
+                        <table>
+                            <tr>
+                                <td>
+                                    <img alt="" width="128px"
+                                        height="128px"
+                                        src=
+                                                {% if blog['avatar'] %}
+                                                    static/images/{{blog['avatar']}}
+                                                {% else %}
+                                                    static/images/default_avatar.png
+                                                {% end %}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center"><p style="width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">{{blog['author']}}</p></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td><b>{{blog['title']}}</b></td>
+                </tr>
+                <!--2行-->
+                <tr>
+                    <td><b>{{blog['tags']}}</b></td>
+                </tr>
+                <!--3行-->
+                <tr>
+                    <td>
+                        {{blog['cotent']}}
+                    </td>
+                </tr>
+                <!--4行-->
+                <tr>
+                    <td align="right">
+                        {% if blog['count'] %}
+                            评论数量　
+                            {{blog['count'] }}
+                        {% else %}
+                            lay on sofa!!
+                        {% end %}
+                    </td>
+                </tr>
+            </table>
+        </li>
+        {% end %}
+    </ul>
+{% end %}

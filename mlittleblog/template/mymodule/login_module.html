@@ -1,0 +1,24 @@
+{% block body %}
+    <form action='/login' method='post' enctype=multipart/form-data>
+            <div>
+                <img id="show_img"
+                width="123px" height="128px">
+            </div>
+            <div>
+                用户名:<input id="input_uname" type='text' name='uname'>
+            </div>
+            <div>
+                密&nbsp;&nbsp;码:<input id="input_upwd" type='text' name='upwd'>
+                <span id="span_upwd" style="color: red;font-weight: bolder;"></span>
+            </div>
+            <span style="color: red;font-weight: bolder">{{info}}</span>
+            <div>
+                <input type='file' name='files'>
+            </div>
+            <p>
+                <input type='submit' value='登录'>
+                <input type='button' value='注册'
+                       onclick="javascript:location.href='/register';">
+            </p>
+    </form>
+{% end %}

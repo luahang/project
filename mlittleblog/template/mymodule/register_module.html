@@ -1,0 +1,33 @@
+{% block body %}
+<form action='/register' method="post" enctype=multipart/form-data>
+    <div>
+        用户名:<input id="input_uname" type="text" name="uname">
+        <span id="span_uname" style="color: red;font-weight: bolder;"></span>
+    </div>
+    <div>
+        密&nbsp;&nbsp;码:<input type="password" name="upwd">
+
+    </div>
+    <div>
+        头&nbsp;&nbsp;像:<input type="file" name="avatar">
+    </div>
+    <div>
+        城&nbsp;&nbsp;市:
+        <select name="city" id="select" >
+            <option value="chengdu">成都</option>
+            <option value="shanghai">上海</option>
+            <option value="beijing">北京</option>
+            <option value="new york">纽约</option>
+            <option value="berlin">柏林</option>
+            <option value="washingdon">华盛顿</option>
+        </select>
+    </div>
+    <p style="color: red"><b>{{result}}</b></p>
+    <p>
+        <input type='submit' value='注册'>
+        <input type='button' value="登录"　
+               onclick="javascript:location.href='/login'">
+    </p>
+
+</form>
+{% end %}
